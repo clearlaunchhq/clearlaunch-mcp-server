@@ -1,0 +1,41 @@
+{
+  "name": "@clearlaunchhq/mcp-server",
+  "version": "0.1.0",
+  "description": "MCP server for ClearLaunch — open, deterministic regulatory compliance research for product teams. Thin stdio client around clearlaunch.dev/api/mcp.",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "clearlaunch-mcp-server": "bin/cli.js"
+  },
+  "main": "bin/cli.js",
+  "files": [
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "compliance",
+    "regulatory",
+    "legal",
+    "privacy",
+    "gdpr",
+    "coppa",
+    "clearlaunch"
+  ],
+  "homepage": "https://clearlaunch.dev/mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clearlaunchhq/clearlaunch-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://clearlaunch.dev/security"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
