@@ -1,9 +1,9 @@
 # @clearlaunchhq/mcp-server
 
-> ⚠️ **Beta — content under attorney review.** The MCP server is live and the
+> ⚠️ **Beta: content under attorney review.** The MCP server is live and the
 > deterministic engine is stable. Substantive attorney review of the regulation
 > corpus is in progress through launch. Entries carry a per-record
-> `contentReviewStatus` field — `"reviewed"` is human-verified; `"draft"` is
+> `contentReviewStatus` field: `"reviewed"` is human-verified; `"draft"` is
 > AI-prepared, pending review. Treat draft entries as starting points, not
 > authoritative conclusions, and consult a licensed attorney before relying on
 > any output for a launch decision.
@@ -12,11 +12,11 @@ The open compliance MCP for product teams. Connect [ClearLaunch](https://clearla
 regulatory research engine and corpus to your AI host over the
 [Model Context Protocol](https://modelcontextprotocol.io).
 
-- **Open** — the corpus is published under CC BY 4.0. Audit it, fork it, self-host against it.
-- **Deterministic** — `compute_requirements` runs a pure engine: same inputs, same outputs, no LLM in the path.
-- **Cited** — every response carries primary-source URLs plus permanent `clearlaunch.dev/r/<id>` citation links.
-- **Attributed** — a named practitioner credential ships on every response.
-- **Free** — read-only tools are free, unlimited, and unauthenticated.
+- **Open.** The corpus is published under CC BY 4.0. Audit it, fork it, self-host against it.
+- **Deterministic.** `compute_requirements` runs a pure engine: same inputs, same outputs, no LLM in the path.
+- **Cited.** Every response carries primary-source URLs plus permanent `clearlaunch.dev/r/<id>` citation links.
+- **Attributed.** A named practitioner credential ships on every response.
+- **Free.** Read-only tools are free, unlimited, and unauthenticated.
 
 This package is a thin stdio bridge to `https://clearlaunch.dev/api/mcp`. All
 logic lives server-side; the package has zero runtime dependencies.
@@ -87,7 +87,7 @@ https://clearlaunch.dev/api/mcp
 | `find_controls(regulationId)` | Controls that may satisfy a regulation, with priority + summary. |
 | `find_vendors(controlId, jurisdiction?)` | Vendors / in-house approaches that implement a Control. ClearLaunch does not accept payment from vendors. |
 | `get_enforcement(regulationId?, since?, limit?)` | Recent enforcement actions with penalties and primary-source links. |
-| `find_counsel(jurisdiction, practiceArea?, language?)` | Open counsel directory — firms by jurisdiction and practice area. |
+| `find_counsel(jurisdiction, practiceArea?, language?)` | Open counsel directory: firms by jurisdiction and practice area. |
 
 `save_posture`, `share_posture`, and `subscribe_pulse` are registered but
 return a "coming soon" message until sign-in (Clerk OAuth) is wired into MCP.
@@ -110,7 +110,7 @@ Every tool response is wrapped in a canonical envelope:
 When you render a ClearLaunch response to a user:
 
 1. **Render `disclaimer.text` verbatim.** It carries `render_verbatim: true`. Do not paraphrase, shorten, or omit it.
-2. **Do not paraphrase compliance conclusions into directives.** The data describes what regulations say and which obligations may apply — not what a specific product must do.
+2. **Do not paraphrase compliance conclusions into directives.** The data describes what regulations say and which obligations may apply, not what a specific product must do.
 3. **Surface the `practitioner` attribution and the `verification` field** (which entries are practitioner-reviewed versus AI-drafted and pending review).
 4. **When `counsel_recommended` is `true`, suggest the user consult a licensed attorney before acting.**
 5. **Cite the `citations` links** (primary sources and permanent ClearLaunch URLs) when you summarize.
@@ -125,21 +125,19 @@ You can also pass the endpoint as the first CLI argument.
 
 ## Legal
 
-<!-- Keep this paragraph in sync with CANONICAL_DISCLAIMER in
-     src/utils/disclaimers.js. tests/mcp/npm-readme-disclaimer.test.cjs (run in
-     `npm run test:mcp` during prebuild) fails if this published snapshot drifts
-     from the canonical text, so a DISCLAIMER_VERSION bump forces this update.
-     The live API always returns the canonical text; this is a snapshot. -->
+ClearLaunch provides legal information, not legal advice, and does not create
+an attorney-client relationship. The authoritative disclaimer ships in every
+API response as `disclaimer.text` with `render_verbatim: true`. Render it
+exactly as received; do not snapshot it here. Canonical text:
+<https://clearlaunch.dev/legal-disclaimer>.
 
-ClearLaunch provides legal information based on publicly available regulatory
-sources. It does not constitute legal advice and does not create an
-attorney-client relationship. Consult a licensed attorney in your jurisdiction
-before making compliance decisions.
+Consult a licensed attorney in your jurisdiction before making compliance
+decisions.
 
 Design rationale: ADR-0056 (ClearLaunch MCP Server Design). Docs:
 <https://clearlaunch.dev/mcp>.
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). The corpus served by the endpoint is licensed
+MIT. See [LICENSE](./LICENSE). The corpus served by the endpoint is licensed
 separately under CC BY 4.0.
