@@ -1,6 +1,6 @@
 {
   "name": "@clearlaunchhq/mcp-server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server for ClearLaunch — open, deterministic regulatory compliance research for product teams. Thin stdio client around clearlaunch.dev/api/mcp.",
   "license": "MIT",
   "type": "commonjs",
